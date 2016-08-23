@@ -1,0 +1,98 @@
+<%= nested_form_for(@entity) do |f| %>
+  <% if @entity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+      <ul>
+      <% @entity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<body>
+   <div class = "container">
+
+      <div class="row" >
+
+       <% if params[:action] == 'edit' %>
+  
+          <div id="disable" class="form-group col-md-8">
+           <label for="entity_disable_person">Disable person</label>
+           <input type="hidden" value="0" name="entity[disable_person]"  >
+           <input id="entity_disable_person" type="checkbox" name="entity[disable_person]" value= "1" >
+         </div>
+        <% end %>
+        </div>
+
+
+                           <!-- <div class = "selectrow">
+
+                          <select id="multipleselect" multiple="multiple" name="selector[]" class="form-control" >
+
+                             <option> Applicant</option>
+                             <option> Client</option>
+                             <option>Foreign Counsel</option>
+                            </select>
+                            <br>
+                            <br>
+                            <br>  -->
+   <!-- <div class= "row" value= "<%= @entity.selector %>" > -->
+  <%#= f.select :selector, ['Applicant','Client','Foreign Counsel'], {  }, {:multiple => true,include_blank: true } %>
+
+
+      <select id="entity_selector" name="entity[selector][]"  multiple="multiple" value="" >
+     <option value="Applicant">Applicant</option>
+     <option value="Client">Client</option>
+      <option value="Foreign Counsel">Foreign Counsel</option>
+      </select>
+  <!--  </div> -->
+
+  <div class="row">
+  <div class="form-group col-md-4">
+    <input type="text" id="entity_entity_name" name="entity[entity_name]" class= "form-control" placeholder="Entity Name " value="<%= @entity.entity_name%>" >
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group col-md-4">
+   <input type="text" id="entity_existing_type" name="entity[existing_type]" class="form-control" placeholder=" Existing Type" value="<%= @entity.existing_type %>"  >
+  </div>
+  </div>
+  
+ <table id = "address" >
+  <%= f.fields_for  :addresses do |r| %>
+  <%= render 'address_fields', :f => r %>
+  <% end %>
+  <p> <%= f.link_to_add "Add Address", :addresses %> </p>
+</table>
+  
+  <div class="row" value="<%= @entity.billing %>">
+  <div class="form-group col-md-2">
+  
+    <%= f.label :billing %><br>
+    <%= f.select :billing , [ 'INR','USD','EUR']%>
+  </div>
+ 
+
+  <div class="form-group col-md-4" value="<%= @entity.credit %>">
+    <%= f.label :credit %><br>
+    <%= f.select :credit ,['0','15','30','45','60','75','90','120'] %>
+  </div>
+  </div>
+  
+  <div class="field" value="<%= @entity.notes %>">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script type="text/javascript">
+$("#entity_selector").select2();
+</script>
+

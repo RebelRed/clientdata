@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Selector:</strong>
+  <%= @entity.selector %>
+</p>
+
+<p>
+  <strong>Entity name:</strong>
+  <%= @entity.entity_name %>
+</p>
+
+<p>
+  <strong>Existing type:</strong>
+  <%= @entity.existing_type %>
+</p>
+
+<p>
+  <strong>Billing:</strong>
+  <%= @entity.billing %>
+</p>
+
+<p>
+  <strong>Credit:</strong>
+  <%= @entity.credit %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @entity.notes %>
+</p>
+<strong>Disable person:</strong>
+  <%= @entity.disable_person %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <% @entity.addresses.each do |add| %>
+
+ <p> <%= add.street %> </p>
+ <p> <%= add.city %> </p>
+ <p> <%= add.country %> </p>
+ <p> <%= add.zip %> </p>
+ <p> <%= add.tmo %></p>
+ <p> <%= add.state %> </p>
+
+  <% end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_entity_path(@entity) %> |
+<%= link_to 'Back', entities_path %>

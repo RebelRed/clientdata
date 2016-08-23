@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+             <center>  <h1>Listing Entities</h1> </center>
+
+
+
+  <tbody>
+  <div class = "container">
+
+   <h4> <%= link_to 'New Entity', new_entity_path %> </h4>
+
+   <h4> <%= link_to 'Disabled person', disabled_entities_path %> </h4>
+    </div>
+    
+  <%= form_tag(entities_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
+
+    <% @entities.each do |entity| %>
+<div class = "container">
+
+<div class="row">
+<div class="entity_wrapper">
+ <h2 class="form-group col-md-2"><%= link_to entity.entity_name , @entity %></h2>
+       
+ <h4> <%= link_to 'Show', entity %> </h4>
+  <h4><%= link_to 'Edit', edit_entity_path(entity) %></h4>
+<h4> <%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></h4>
+
+
+          <p class="date"><%= entity.created_at.strftime("%B, %D, %Y")%></p>
+          </div>
+          </div>
+          </div>
+    
+    <% end %>
+    
+
+  </tbody>
+</table>
+   <%= will_paginate @entities %>
+<br>
+
+

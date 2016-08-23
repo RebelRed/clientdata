@@ -1,0 +1,2 @@
+json.extract! entity, :id, :selector, :entity_name, :existing_type, :billing, :credit, :notes, :street, :city, :state, :zip, :country, :tmo, :created_at, :updated_at
+json.url entity_url(entity, format: :json)
