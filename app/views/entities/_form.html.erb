@@ -18,9 +18,11 @@
        <% if params[:action] == 'edit' %>
   
           <div id="disable" class="form-group col-md-8">
-           <label for="entity_disable_person">Disable person</label>
+           <!-- <label for="entity_disable_person">Disable person</label>
            <input type="hidden" value="0" name="entity[disable_person]"  >
-           <input id="entity_disable_person" type="checkbox" name="entity[disable_person]" value= "1" >
+           <input id="entity_disable_person" type="checkbox" name="entity[disable_person]" value= "1" > -->
+           <%= f.label :disable_person %>
+           <%= f.check_box :disable_person  %>
          </div>
         <% end %>
         </div>
@@ -41,7 +43,7 @@
   <%#= f.select :selector, ['Applicant','Client','Foreign Counsel'], {  }, {:multiple => true,include_blank: true } %>
 
 
-      <select id="entity_selector" name="entity[selector][]"  multiple="multiple" value="" >
+      <select id="entity_selector" name="entity[selector][]"  multiple="multiple" value=" <%= @entity.selector %>" >
      <option value="Applicant">Applicant</option>
      <option value="Client">Client</option>
       <option value="Foreign Counsel">Foreign Counsel</option>
@@ -61,10 +63,11 @@
   </div>
   
  <table id = "address" >
-  <%= f.fields_for  :addresses do |r| %>
-  <%= render 'address_fields', :f => r %>
+  <%= f.fields_for  :addresses do |add| %>
+  <%= render 'address_fields', :add => add %>
+  
   <% end %>
-  <p> <%= f.link_to_add "Add Address", :addresses %> </p>
+  
 </table>
   
   <div class="row" value="<%= @entity.billing %>">
@@ -86,13 +89,16 @@
     <%= f.text_area :notes %>
   </div>
   
-  
+  <p> <%= f.link_to_add "Add Address", :addresses %> </p>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
 <script type="text/javascript">
-$("#entity_selector").select2();
+$("#entity_selector").select2({
+  tags: true
+  tokenSeparators: [',', ' ']
+});
 </script>
 

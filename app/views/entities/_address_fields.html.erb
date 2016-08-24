@@ -1,43 +1,49 @@
- <% @entity.addresses.each do |add| %>
- 
- <div class="fields">
+<div class="fields">
 
  <div class="row">
   <div class="form-group col-md-4">
-  <input id="entity_addresses_attributes_0_street" type="text" name="entity[addresses_attributes][0][street]" class="form-control" placeholder="stree name" value="<%= add.street %>">
+  
+  <%= add.text_field :street , placeholder:'street',:class => "form-control" %>
+ 
   </div>
   </div>
 
  <div class="row">
    <div class="form-group col-md-2">
-    <input id="entity_addresses_attributes_0_city" type="text" name="entity[addresses_attributes][0][city]" placeholder="city name" value="<%= add.city %>">
+    
+    <%= add.text_field :city , placeholder:'city', :class => "form-control" %>
      </div>
  <div class="form-group col-md-4">
-  <input id="entity_addresses_attributes_0_state" type="text" name="entity[addresses_attributes][0][state]" placeholder="State" value="<%= add.state %>">
+  
+   <%= add.text_field :state , placeholder:'state', :class => "form-control" %>
     </div>
     </div>
 
  <div class="row">
   <div class="form-group col-md-2">
-   <input id="entity_addresses_attributes_0_zip" type="number" name="entity[addresses_attributes][0][zip]" placeholder="zip code" value="<%= add.zip %>" >
+ 
+   <%= add.number_field :zip , placeholder:'zip code', :class => "form-control" %>
      </div>
 
  <div class="form-group col-md-4">
-  <input id="entity_addresses_attributes_0_country" type="text" name="entity[addresses_attributes][0][country]" value="<%= add.country %>" >
+ 
+ <%= add.text_field :country , placeholder:'country', :class => "form-control" %>
     </div>
       </div>
 
  <div class="row">
   <div class="form-group col-md-4">
-     <input id="entity_addresses_attributes_0_tmo" type="number" name="entity[addresses_attributes][0][tmo]" class="form-control" placeholder="TMO CODE" value="<%= add.tmo %>">
+    
+     <%= add.number_field :tmo , placeholder:'TMO CODE' , :class => "form-control"%>
      </div>
      </div>
  <div class="row">
  <div class = "form-group col-md-3">
-   <input id="entity_addresses_attributes_0__destroy" type="hidden" name="entity[addresses_attributes][0][_destroy]" >
+ 
+    
+    <%= add.link_to_remove "Remove this address" , :class => "remove_nested_fields"  %> 
+
    </div>
 
-<a class="remove_nested_fields" href="javascript:void(0)" data-association="addresses">Remove this task</a>
 
 </div>
-<% end %>

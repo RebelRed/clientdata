@@ -86,6 +86,6 @@ end
     def entity_params
       #params[:entity][:selector] ||= ['Applicant']
 
-      params.require(:entity).permit(:entity_name,:existing_type,:billing,:credit,:notes,:disable_person, addresses_attributes: [:entity_id,:street,:city,:country,:zip,:tmo,:state,:_destroy] , :selector => [])
+      params.require(:entity).permit(:entity_name,:existing_type,:billing,:credit,:notes,:disable_person, addresses_attributes: [ :id, :entity_id,:street,:city,:country,:zip,:tmo,:state,:_destroy] , :selector => [])
     end
 end
