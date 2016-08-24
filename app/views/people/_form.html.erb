@@ -17,18 +17,17 @@
 <div class="row">
 <% if params[:action] == 'edit' %>
   
-    <div id="disable" class="form-group col-md-8" value= "<%= @person.disable_person %>">
-<label for="person_disable_person">Disable person</label>
-<input type="hidden" value="0" name="person[disable_person]">
-<input id="person_disable_person" type="checkbox" name="person[disable_person]" value="1">
-</div>
+    <div id="disable" class="form-group col-md-8 col-md-offset-3" value= "<%= @person.disable_person %>">
+    <%= f.label :disable_person %>
+    <%= f.check_box :disable_person  %>
+    </div>
     
   <% end %>
 </div>
 
 
 <div class="row">
-  <div class="form-group col-md-2">
+  <div class="form-group col-md-2 col-md-offset-3">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
   </div>
@@ -40,21 +39,21 @@
 
 <div class="row">
 
-  <div class="form-group col-sm-5">
+  <div class="form-group col-md-4 col-md-offset-3">
    
    <input id="person_job" type="text" name="person[job]" class= "form-control" placeholder="job TiTle/Organization" value="<%= @person.job %>">
   </div>
   </div>
   <div class="row">
 
-  <div class="form-group col-md-5">
+  <div class="form-group col-md-4 col-md-offset-3">
  
     <input id="person_email" type="text" name="person[email]" class= "form-control" placeholder="email" value="<%= @person.email %>">
   </div>
   </div>
 <div class="row">
 
-  <div class="form-group col-md-2">
+  <div class="form-group col-md-2 col-md-offset-3">
     <%= f.label :city %><br>
     <%= f.text_field :city %>
   </div>
@@ -64,7 +63,7 @@
   </div>
   </div>
   <div class="row">
-  <div class="form-group col-sm-2">
+  <div class="form-group col-md-2 col-md-offset-3">
     <%= f.label :key_contact %><br>
     <%= f.check_box :key_contact %>
   </div>
@@ -75,7 +74,7 @@
   </div>
   <div class="row">
   
-  <div class="form-group col-md-8">
+  <div class="form-group col-lg-9 col-md-offset-3">
     <%= f.label :notes %><br>
     <%= f.text_area :notes %>
   </div>
@@ -86,7 +85,7 @@
   </div>
   </div>
 <div class="row">
-  <div class="form-group col-md-8" >
+  <div class="form-group col-lg-3 col-md-offset-4" >
    <input type="submit" value="Update Person" name="commit">
   </div>
   </div>

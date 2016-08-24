@@ -1,53 +1,90 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h3>
   <strong>Selector:</strong>
   <%= @entity.selector %>
-</p>
+</h3></p>
+</div>
+</div>
 
-<p>
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h3>
   <strong>Entity name:</strong>
   <%= @entity.entity_name %>
-</p>
+</h3>
+</div>
+</div>
 
-<p>
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h3>
   <strong>Existing type:</strong>
   <%= @entity.existing_type %>
-</p>
+</h3>
+</div>
+</div>
 
-<p>
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h3>
   <strong>Billing:</strong>
   <%= @entity.billing %>
-</p>
+</h3>
+</div>
+</div>
 
-<p>
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h3>
   <strong>Credit:</strong>
   <%= @entity.credit %>
-</p>
+</h3>
+</div>
+</div>
 
-<p>
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h3>
   <strong>Notes:</strong>
   <%= @entity.notes %>
-</p>
+</h3>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h3>
 <strong>Disable person:</strong>
   <%= @entity.disable_person %>
-</p>
+</h3>
+</div>
+</div>
 
-<p>
-  <strong>Address:</strong>
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h3>
+  
   <% @entity.addresses.each do |add| %>
-
- <p> <%= add.street %> </p>
- <p> <%= add.city %> </p>
- <p> <%= add.country %> </p>
- <p> <%= add.zip %> </p>
- <p> <%= add.tmo %></p>
- <p> <%= add.state %> </p>
+  <strong>Address <%= add.id%>:</strong>
+ <h4> <%= add.street %> </h4>
+ <h4> <%= add.city %> </h4>
+ <h4> <%= add.country %> </h4>
+ <h4> <%= add.zip %> </h4>
+ <h4> <%= add.tmo %></h4>
+ <h4> <%= add.state %> </h4>
 
   <% end %>
-</p>
+</h3>
+</div>
+</div>
 
 
-
-<%= link_to 'Edit', edit_entity_path(@entity) %> |
-<%= link_to 'Back', entities_path %>
+<div class="row">
+<div class="col-md-4 col-md-offset-2">
+<h5><%= link_to 'Edit', edit_entity_path(@entity) %></h5> 
+<h5><%= link_to 'Back', entities_path %></h5>
+</div>
+</div>

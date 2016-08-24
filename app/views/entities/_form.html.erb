@@ -17,10 +17,8 @@
 
        <% if params[:action] == 'edit' %>
   
-          <div id="disable" class="form-group col-md-8">
-           <!-- <label for="entity_disable_person">Disable person</label>
-           <input type="hidden" value="0" name="entity[disable_person]"  >
-           <input id="entity_disable_person" type="checkbox" name="entity[disable_person]" value= "1" > -->
+          <div id="disable" class="form-group col-md-8 col-md-offset-3">
+          
            <%= f.label :disable_person %>
            <%= f.check_box :disable_person  %>
          </div>
@@ -28,77 +26,110 @@
         </div>
 
 
-                           <!-- <div class = "selectrow">
-
-                          <select id="multipleselect" multiple="multiple" name="selector[]" class="form-control" >
-
-                             <option> Applicant</option>
-                             <option> Client</option>
-                             <option>Foreign Counsel</option>
-                            </select>
-                            <br>
-                            <br>
-                            <br>  -->
-   <!-- <div class= "row" value= "<%= @entity.selector %>" > -->
-  <%#= f.select :selector, ['Applicant','Client','Foreign Counsel'], {  }, {:multiple => true,include_blank: true } %>
-
-
+      <div class="row">
+      <div class="form-group col-md-4 col-md-offset-3">
       <select id="entity_selector" name="entity[selector][]"  multiple="multiple" value=" <%= @entity.selector %>" >
      <option value="Applicant">Applicant</option>
      <option value="Client">Client</option>
       <option value="Foreign Counsel">Foreign Counsel</option>
       </select>
-  <!--  </div> -->
+      </div>
+      </div>
+  
+
+    <div class="row">
+       <div class="form-group col-md-4 col-md-offset-3">
+       <input type="text" id="entity_entity_name" name="entity[entity_name]" class= "form-control" placeholder="Entity Name " value="<%= @entity.entity_name%>" >
+      </div>
+    </div>
+
+    <div class="row">
+     <div class="form-group col-md-4 col-md-offset-3">
+      <input type="text" id="entity_existing_type" name="entity[existing_type]" class="form-control" placeholder=" Existing Type" value="<%= @entity.existing_type %>"  >
+     </div>
+    </div>
+  
+      
+     
+      <h4> <%= f.link_to_add "Add Address", :addresses %> </h4>
+      
+    
+    
+      <%= f.fields_for  :addresses do |add| %>
+      <%#= render 'address_fields', :add => add %>
+      <div class="row">
+    <div class="form-group col-md-4 col-md-offset-3">
+      <%= add.text_field :street , placeholder:'street',:class => "form-control" %>
+    </div>
+   </div>
+   <div class="row">
+     <div class="form-group col-md-2 col-md-offset-3">
+       <%= add.text_field :city , placeholder:'city', :class => "form-control" %>
+     </div>
+     <div class="form-group col-md-2">
+       <%= add.text_field :state , placeholder:'state', :class => "form-control" %>
+     </div>
+   </div>
+
+   <div class="row">
+     <div class="form-group col-md-2 col-md-offset-3">
+       <%= add.number_field :zip , placeholder:'zip code', :class => "form-control" %>
+     </div>
+     <div class="form-group col-md-2">
+       <%= add.text_field :country , placeholder:'country', :class => "form-control" %>
+     </div>
+   </div>
 
   <div class="row">
-  <div class="form-group col-md-4">
-    <input type="text" id="entity_entity_name" name="entity[entity_name]" class= "form-control" placeholder="Entity Name " value="<%= @entity.entity_name%>" >
+   <div class="form-group col-md-4 col-md-offset-3">
+     <%= add.number_field :tmo , placeholder:'TMO CODE' , :class => "form-control"%>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="form-group col-md-4">
-   <input type="text" id="entity_existing_type" name="entity[existing_type]" class="form-control" placeholder=" Existing Type" value="<%= @entity.existing_type %>"  >
+  <div class="row">
+   <div class = "form-group col-md-3 col-md-offset-3">
+    <%= add.link_to_remove "Remove this address" , :class => "remove_nested_fields"  %> 
+   </div>
   </div>
-  </div>
+ <% end %>
+ 
+    
   
- <table id = "address" >
-  <%= f.fields_for  :addresses do |add| %>
-  <%= render 'address_fields', :add => add %>
-  
-  <% end %>
-  
-</table>
-  
-  <div class="row" value="<%= @entity.billing %>">
-  <div class="form-group col-md-2">
-  
-    <%= f.label :billing %><br>
-    <%= f.select :billing , [ 'INR','USD','EUR']%>
-  </div>
+    <div class="row" value="<%= @entity.billing %>">
+      <div class="form-group col-lg-2 col-md-offset-3">
+        <%= f.label :billing %><br>
+        <%= f.select :billing , [ 'INR','USD','EUR']%>
+      </div>
+    
  
 
-  <div class="form-group col-md-4" value="<%= @entity.credit %>">
-    <%= f.label :credit %><br>
-    <%= f.select :credit ,['0','15','30','45','60','75','90','120'] %>
-  </div>
-  </div>
+    <div class="form-group col-lg-3 " value="<%= @entity.credit %>">
+     <%= f.label :credit %><br>
+     <%= f.select :credit ,['0','15','30','45','60','75','90','120'] %>
+    </div>
+    </div>
+ 
   
-  <div class="field" value="<%= @entity.notes %>">
+  <div class="form-group col-lg-9 col-md-offset-3" value="<%= @entity.notes %>">
     <%= f.label :notes %><br>
     <%= f.text_area :notes %>
   </div>
+   
   
-  <p> <%= f.link_to_add "Add Address", :addresses %> </p>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="row">
+     <div class="form-group col-lg-3 col-md-offset-4">
+        <div class="actions">
+        <%= f.submit %>
+        </div>
+     </div>
+    </div>
   </div>
 <% end %>
 <script type="text/javascript">
 $("#entity_selector").select2({
   tags: true
-  tokenSeparators: [',', ' ']
+  
 });
 </script>
 

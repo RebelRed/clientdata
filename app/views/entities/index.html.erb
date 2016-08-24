@@ -5,28 +5,35 @@
 
 
   <tbody>
-  <div class = "container">
+    <div class = "container">
 
-   <h4> <%= link_to 'New Entity', new_entity_path %> </h4>
-
-   <h4> <%= link_to 'Disabled person', disabled_entities_path %> </h4>
-    </div>
-    
-  <%= form_tag(entities_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-  <%= submit_tag "Search" %>
-<% end %>
-
+      <div class="row">
+         <div class="col-md-4 " >
+          <h3> <%= link_to 'New Entity', new_entity_path %> </h3>
+         </div>
+         <div class="col-md-4">
+          <h3> <%= link_to 'Disabled person', disabled_entities_path %> </h3>
+         </div>
+      
+        <div class="col-md-4">  
+          <%= form_tag(entities_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+          <%= submit_tag "Search" %>
+          <% end %>
+        </div>
+     </div>
+     
+   </div>
 
 
     <% @entities.each do |entity| %>
-<div class = "container">
+   <div class = "container">
 
 <div class="row">
 <div class="entity_wrapper">
- <h2 class="form-group col-md-2"><%= link_to entity.entity_name , @entity %></h2>
+ <h2 class="table table-bordered"><%= link_to entity.entity_name , entity %></h2>
        
- <h4> <%= link_to 'Show', entity %> </h4>
+ 
   <h4><%= link_to 'Edit', edit_entity_path(entity) %></h4>
 <h4> <%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></h4>
 
@@ -41,7 +48,13 @@
 
   </tbody>
 </table>
-   <%= will_paginate @entities %>
-<br>
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-3 col-md-offset-3">
+   <h4> <%= will_paginate @entities %><h4>
+  </div>
+ </div>
+</div>
 
 
