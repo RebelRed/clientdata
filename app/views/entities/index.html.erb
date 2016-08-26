@@ -19,7 +19,7 @@
      </div>
      
    
-   <% @entities.each do |entity| %>
+   
    <div class = "container">
       <table class="table ">
           
@@ -34,18 +34,19 @@
           </thead>
           <tbody>
             <tr>
-        
+                <% @entities.each do |entity| %>   
               <td><h3><%= link_to entity.entity_name , entity %><h3></td>
-              <td><h5><%= link_to entity.existing_type %><h5></td>
-              <td><h5><%= link_to entity.notes %><h5></td>
+              <td><h4><%= link_to entity.existing_type %><h4></td>
+             <td><h4><%= link_to entity.notes %><h4></td>
               <td > <h4><%= link_to 'Edit', edit_entity_path(entity) %></h4>
                           <h4> <%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></h4>
                       </td>
             </tr>
+             <% end %>
           </tbody>
       </table> 
     </div>
-   <% end %>
+  
  <div class="container">
    <div class="row">
      <div class="col-md-3 col-md-offset-3">

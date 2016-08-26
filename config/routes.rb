@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :people do 
     collection do
+     
      get 'tags/:tag', to: 'people#index', as: :tag 
      get 'tagged' , to: 'people#tagged'
      get 'disabled' , to: 'people#disabled'

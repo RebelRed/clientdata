@@ -81,6 +81,7 @@ end
   #   flash[:notice] = "marked as Disabled"
   #   redirect_to disable_person_path
   # end
+  
 
 
    def disabled 

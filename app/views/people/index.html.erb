@@ -1,16 +1,18 @@
+
 <p id="notice"><%= notice %></p>
 
 <center><h1>Listing People</h1></center>
 
 
   
-  
+ 
 
   <div class = "container">
       <div class="row">
         <div class="col-md-4 " >
           <h3>   <%= link_to 'New Person', new_person_path %> </h3>
           </div>
+          
            <div class="col-md-4 ">
                 
             <h3>     <%= link_to 'Disabled person', disabled_people_path %></h3>
@@ -24,37 +26,49 @@
       </div>
   
    
+</div>
 
-    <% @people.each do |person| %>
       <div class="container">
-         <table class="table table-condensed">
+      
+      
+     
+          
+         <div class="col-sm-12">
+           <table  class="table table-condensed">
              <thead>
                 <tr>
                   <th>First Name</th>
-                  
                   <th>Profession</th>
                   <th> Entry date </th>
                   <th> Tags</th>
                 </tr>
               </thead>
               <tbody>
+              <% @people.each do |person| %>
+    
                  <tr>
-                    <td><h3><%= link_to person.first_name ,person %></h3><div  class="label label-primary" id="key">Key Contact</div></td>
+                    <td class="col-md-2"><h3><%= link_to person.first_name ,person %></h3></td>
                     
-                    <td><h3><%= link_to person.job %></h3></td>
-                    <td><h3> <p class="date"><%= person.created_at.strftime("%B, %D, %Y")%></p></h3></td>
-                    <td><h3><%= raw person.tag_list.map { |t| link_to t ,  tag_people_path(t)  }.join(', ') %></h3></td>
-                    <td> <h3><%= link_to 'Edit', edit_person_path(person) %> </h4>
+                    <td class="col-md-2"><h3><%= link_to person.job %></h3></td>
+                    <td ><h3> <p class="date"><%= person.created_at.strftime("%B, %D, %Y")%></p></h3></td>
+                    <td class="col-md-4"><h3><%= raw person.tag_list.map { |t| link_to t ,  tag_people_path(t)  }.join(', ') %></h3></td>
+                    <td class="col-md-2"> <h3><%= link_to 'Edit', edit_person_path(person) %> </h4>
                     <%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %> </h3> </td>
 
                   </tr>
+                  <% end %>
                   </tbody>
+                  
+                  
                   </table>
                   </div>
                   </div>
-                <% end %>
+                  </div>
+                
 
                   
+
+
     
   
     <div class="container">
