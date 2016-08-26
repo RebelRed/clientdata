@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :people do 
     collection do
-    post 'disable' , to: 'people#disable'
+     get 'tags/:tag', to: 'people#index', as: :tag 
+     get 'tagged' , to: 'people#tagged'
      get 'disabled' , to: 'people#disabled'
      #get 'search' , to: 'people#search'
      #get 'searchresults' , to: 'people#searchresults'

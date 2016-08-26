@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
              <center>  <h1>Listing Entities</h1> </center>
-
-
-
-  <tbody>
-    <div class = "container">
-
-      <div class="row">
+ <div class = "container">
+     <div class="row">
          <div class="col-md-4 " >
           <h3> <%= link_to 'New Entity', new_entity_path %> </h3>
          </div>
@@ -23,38 +18,41 @@
         </div>
      </div>
      
-   </div>
-
-
-    <% @entities.each do |entity| %>
+   
+   <% @entities.each do |entity| %>
    <div class = "container">
-
-<div class="row">
-<div class="entity_wrapper">
- <h2 class="table table-bordered"><%= link_to entity.entity_name , entity %></h2>
-       
- 
-  <h4><%= link_to 'Edit', edit_entity_path(entity) %></h4>
-<h4> <%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></h4>
-
-
-          <p class="date"><%= entity.created_at.strftime("%B, %D, %Y")%></p>
-          </div>
-          </div>
-          </div>
-    
-    <% end %>
-    
-
-  </tbody>
-</table>
-
-<div class="container">
- <div class="row">
-  <div class="col-md-3 col-md-offset-3">
-   <h4> <%= will_paginate @entities %><h4>
-  </div>
+      <table class="table ">
+          
+          <thead>
+            <tr>
+     
+              <th>ENTITY NAME</th>
+              <th>Existing Type</th>
+              <th>Notes</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+        
+              <td><h3><%= link_to entity.entity_name , entity %><h3></td>
+              <td><h5><%= link_to entity.existing_type %><h5></td>
+              <td><h5><%= link_to entity.notes %><h5></td>
+              <td > <h4><%= link_to 'Edit', edit_entity_path(entity) %></h4>
+                          <h4> <%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></h4>
+                      </td>
+            </tr>
+          </tbody>
+      </table> 
+    </div>
+   <% end %>
+ <div class="container">
+   <div class="row">
+     <div class="col-md-3 col-md-offset-3">
+       <h4> <%= will_paginate @entities %><h4>
+     </div>
+   </div>
  </div>
+
+
 </div>
-
-

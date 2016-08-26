@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "acts-as-taggable-on"
 gem "devise"
 gem "mysql"
 gem 'mysql2', '~> 0.4.4'

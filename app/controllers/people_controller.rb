@@ -9,7 +9,9 @@ class PeopleController < ApplicationController
     
     if params[:search]
       @people = Person.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 5)
-   else
+   elsif params[:tag]
+     @people = Person.tagged_with(params[:tag]).paginate(page: params[:page])
+    else
     @people = Person.all.paginate(page: params[:page])
   end
 end
@@ -38,6 +40,8 @@ end
 
     respond_to do |format|
       if @person.save
+        person.tag_list="superhero,supervillian,sidekick"
+        person.tag_list
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -90,6 +94,13 @@ end
      render 'index'
     end
     
+    def tagged
+    if params[:tag].present? 
+      @people = Person.tagged_with(params[:tag])
+    else 
+      @people = Person.all
+    end  
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
@@ -98,6 +109,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :job, :email, :city, :country, :key_contact, :tags, :notes, :disable_person)
+      params.require(:person).permit(:first_name, :last_name, :job, :email, :city, :country, :key_contact, :tag_list, :notes, :disable_person)
     end
 end
