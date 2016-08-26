@@ -1,4 +1,8 @@
 class Entity < ActiveRecord::Base
+
+   include PublicActivity::Model
+   tracked owner: ->(controller, model) { controller && controller.current_user }
+
 has_many :addresses 
 accepts_nested_attributes_for :addresses, allow_destroy: true
 

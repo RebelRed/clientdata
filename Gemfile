@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "public_activity"
 gem "acts-as-taggable-on"
 gem "devise"
 gem "mysql"

@@ -1,0 +1,11 @@
+<h1> Entity Activities</h1>
+
+<% @activities.each do |activity| %>
+
+ <div class="activity">
+   <%#= link_to activity.owner.email , activity.owner if activity.owner %>
+ 	updated <%= link_to activity.trackable.entity_name %>
+ </div>
+
+
+<% end %>

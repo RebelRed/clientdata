@@ -1,21 +1,25 @@
 Rails.application.routes.draw do
   
 
+  get 'activities/index'
+
   devise_for :users
+  resources :activities
   resources :welcomes
   resources :entities do
+
     collection do
       get 'disabled' , to: 'entities#disabled'
       get 'disable' , to: 'entities#disable'
  end
  end     
 
-  resources :people do 
+  resources :users do 
     collection do
      
-     get 'tags/:tag', to: 'people#index', as: :tag 
-     get 'tagged' , to: 'people#tagged'
-     get 'disabled' , to: 'people#disabled'
+     get 'tags/:tag', to: 'users#index', as: :tag 
+     get 'tagged' , to: 'users#tagged'
+     get 'disabled' , to: 'users#disabled'
      #get 'search' , to: 'people#search'
      #get 'searchresults' , to: 'people#searchresults'
     end

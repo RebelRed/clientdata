@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
    
+
+    has_many :entities
    acts_as_taggable
    acts_as_taggable_on :tags
 

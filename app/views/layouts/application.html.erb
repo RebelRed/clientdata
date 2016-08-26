@@ -18,10 +18,11 @@
 <form class="navbar-form navbar-left">
         <div class="form-group">
 <ul class="nav navbar-nav">
-   <li> <h3> <%= link_to "Person", people_path %></h3></li>
+   <li> <h3> <%= link_to "Person", users_path %></h3></li>
 
       <li><h3><%= link_to "Entities", entities_path %></h3></li>
       </li>
+      <li> <h3> <%= link_to "Activities", activities_path %></h3></li>
       </ul>
 </div>
 </form>
@@ -34,9 +35,9 @@
 
 
 
- <ul class="nav navbar-nav navbar-right">
+ <ul class="nav navbar-nav pull-right">
 <div id="sign_in">
-<ul class="nav navbar-nav">
+<ul class="nav navbar-nav col-md-offset-5">
        <% if user_signed_in? %>
       <li><h3> <%= link_to "Sign Out", destroy_user_session_path , method: :delete %></h3></li>
       <% else %>
