@@ -1,11 +1,14 @@
-<h1> Entity Activities</h1>
+<center>  <h1> Entity Activities</h1> </center> 
 
 <% @activities.each do |activity| %>
 
+ <div class="col-md-offset-2">
  <div class="activity">
-   <%#= link_to activity.owner.email , activity.owner if activity.owner %>
- 	updated <%= link_to activity.trackable.entity_name %>
- </div>
-
+ <div class = "row">
+  <h3> <%= link_to activity.owner.first_name , activity.owner if activity.owner %> 
+ 	 <%= render_activity activity %></h3>
+ 	 </div>
+</div>
+</div>
 
 <% end %>

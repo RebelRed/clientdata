@@ -1,0 +1,8 @@
+  
+ <h3> created </h3>
+
+ <% if activity.trackable %>
+ <h3><%= link_to activity.trackable.entity_name %></h3>
+ <% else %>
+   which is been destroyed
+   <% end  %>
