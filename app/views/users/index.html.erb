@@ -18,6 +18,10 @@
             <h3>     <%= link_to 'Disabled person', disabled_users_path %></h3>
           </div>
           <div class=" col-md-4" >
+            <ul>
+               <%= label_tag :key_person %>
+           <%= check_box_tag :key_person, params[:search] , name: "key_person"%>
+             </ul>
              <%= form_tag(users_path, :method => "get", id: "search-form") do %>
              <%= text_field_tag :search, params[:search], placeholder: "Search" %>
              <%= submit_tag "Search" %>
@@ -47,7 +51,7 @@
               <% @users.each do |user| %>
     
                  <tr>
-                    <td class="col-md-2"><h3><%= link_to user.first_name ,user %></h3> <span class="label label-primary" id="keyc">Key Contact</span></td>
+                    <td class="col-md-2"><h3><%= link_to user.first_name ,user %></h3></td>
                     
                     <td class="col-md-2"><h3><%= link_to user.email %></h3></td>
                     <td ><h3> <p class="date"><%= user.created_at.strftime("%B, %D, %Y")%></p></h3></td>

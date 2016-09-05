@@ -27,6 +27,7 @@ end
 
   # GET /entities/1/edit
   def edit
+    #@entity.create_activity key: 'entity.existing_type', owner: current_user
   end
 
   # POST /entities
@@ -94,9 +95,9 @@ end
 
     
   # end
-  # def entity_name
-  #     @entity.create_activity key: 'entity.entity_name', owner: current_user
-  # end
+  def entity_name
+      @entity.create_activity key: 'entity.entity_name', owner: current_user
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

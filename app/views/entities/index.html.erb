@@ -10,7 +10,8 @@
           <h3> <%= link_to 'Disabled person', disabled_entities_path %> </h3>
          </div>
       
-        <div class="col-md-4">  
+        <div class="col-md-4"> 
+         
           <%= form_tag(entities_path, :method => "get", id: "search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search" %>
           <%= submit_tag "Search" %>

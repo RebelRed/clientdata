@@ -18,6 +18,9 @@
             <h3>     <%= link_to 'Disabled person', disabled_people_path %></h3>
           </div>
           <div class=" col-md-4" >
+            <ul>
+           <%= checkbox_tag :key_person, params[:search]%>
+             </ul>>
              <%= form_tag(people_path, :method => "get", id: "search-form") do %>
              <%= text_field_tag :search, params[:search], placeholder: "Search" %>
              <%= submit_tag "Search" %>
@@ -48,7 +51,7 @@
     
                  <tr>
                     <td class="col-md-2"><h3><%= link_to person.first_name ,person %></h3>
-                    <span class="label label-primary" id="keyc"></span></td>
+                    </td>
                     
                     <td class="col-md-2"><h3><%= link_to person.job %></h3></td>
                     <td ><h3> <p class="date"><%= person.created_at.strftime("%B, %D, %Y")%></p></h3></td>
