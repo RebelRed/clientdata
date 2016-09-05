@@ -1,4 +1,5 @@
 <%= nested_form_for(@entity) do |f| %>
+  
   <% if @entity.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
@@ -30,18 +31,18 @@
       <div class="form-group col-sm-4 col-md-offset-3">
       <label for="id_label_multiple">
           Entity Type
-      <select class="entity_selector form-control" name="entity[selector][]"  multiple="multiple" value=" <%= @entity.selector %>" id="id_label_multiple" >
-     <option value="Applicant">Applicant</option>
-     <option value="Client">Client</option>
-      <option value="Foreign Counsel">Foreign Counsel</option>
-      </select>
-      </label>
+     <!--  <select class="" name="entity[selector][]"  multiple="multiple" value=" <%= @entity.selector %>" id="id_label_multiple" selected="<%= @entity.selector%>" >
+     <option value="Applicant" >Applicant</option>
+     <option value="Client"   >Client</option>
+      <option value="Foreign Counsel"  >Foreign Counsel</option>
+      </select> -->
+
+        <%= f.select :selector,options_for_select( ['Applicant','Client','Foreign Counsel'] ) ,{ :selected => f.object.selector }, { :multiple => true, :id => "id_label_multiple", :class => "form-control" } %> 
+      
+    </label>
             
       </div>
-      <%# if params[:action] == 'edit' %>
-            <!-- <input id="entity type" class="form-group col-sm-4 col-md-offset-3" type="text" value="<%= @entity.selector %>">
-            
-            <%# end %> -->
+     
         </div>
     
        <div class="container">
@@ -58,18 +59,13 @@
            </div>
           </div>
            
-             <div class="row" id="address">
-             <%= f.fields_for  :addresses do |add| %>
-                <%= render 'address_fields', :add => add %>
-             <% end %>
-              <div>
-                 <h4> <%= f.link_to_add "Add Address", :addresses %> </h4>
-                
-                </div>
-           </div>
-          
-    
+             <div class="row" id="address" >
   
+            
+            <%= f.fields_for :addresses,:wrapper => true do |f| %>
+            <%= render 'address_fields', :f => f %>
+               <% end %>
+                 </div>
             <div class="row" value="<%= @entity.billing %>">
               <div class="form-group col-lg-2 col-md-offset-3">
                 <%= f.label :billing %><br>
@@ -100,22 +96,47 @@
                   <div class="actions">
                   <%= f.submit %>
                   </div>
-                 
+                  <div>
+                 <h4> <%= f.link_to_add "Add Address",:addresses ,:id => 'addlink', :data => { :target => "#address" } ,:remote => true  %> </h4>
+                </div>
+
                 </div>
                 </div>
               </div>
          </div>
         
-    
+   
    <% end %>
    </body>
 <script type="text/javascript">
-$("#id_label_multiple").select2({
-  data: ["Applicant","Client","Foreign Counsel"],
-    tags: true,
-    tokenSeparators: [','], 
-    
-});
+
+ 
+$("#id_label_multiple").select2(
+  {tags: true , multiple: true}
+
+  );
+
+
+ $('select').select2().select2('val');
+ $('select').select2('val');
+
+
+ 
+
+
 
 </script>
+
+
+
+
+
+  
+
+                   
+  
+
+               
+
+
 

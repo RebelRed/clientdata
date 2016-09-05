@@ -9,42 +9,35 @@
 <body>
 <nav class = "navbar navbar-inverse" > 
    <div class ="container_fluid">
-    <div class="navbar-header">
+    <div class="navbar-header">  
+
     </div>
-    <ul class="nav navbar-nav">
-    <li class="active">
-   
 
-<form class="navbar-form navbar-left">
-        <div class="form-group">
-<ul class="nav navbar-nav">
-   <li> <h3> <%= link_to "Person", users_path %></h3></li>
 
-      <li><h3><%= link_to "Entities", entities_path %></h3></li>
+   <form class="nav navbar-nav navbar-left">
+    
+
+   <li class=" col-md-4"> <h3> <%= link_to "Person", users_path %></h3></li>
+
+      <li class=" col-md-4"><h3><%= link_to "Entities", entities_path %></h3></li>
       </li>
-      <li> <h3> <%= link_to "Activities", activities_path %></h3></li>
-      </ul>
-</div>
+      <li class=" col-md-3"> <h3> <%= link_to "Activities", activities_path %></h3></li>
+
 </form>
 
  
-    
-
-
-
-
-
-
- <ul class="nav navbar-nav pull-right">
+ <form class="nav navbar-nav pull-right">
 <div id="sign_in">
 <ul class="nav navbar-nav col-md-offset-5">
        <% if user_signed_in? %>
-      <li><h3> <%= link_to "Sign Out", destroy_user_session_path , method: :delete %></h3></li>
+      <li  ><h3> <%= link_to "Sign Out", destroy_user_session_path , method: :delete %></h3></li>
       <% else %>
-    <li><h3> <%= link_to "Sign In", new_user_session_path %></h3></li>
-    <li><h3> <%= link_to "Sign Up",  new_user_registration_path %></h3></li>
+    <li ><h3> <%= link_to "Sign In", new_user_session_path %></h3></li>
+    <li ><h3> <%= link_to "Sign Up",  new_user_registration_path %></h3></li>
      <% end %>
+     </ul>
       </div>
+      </form>
 
      </ul>
       </ul>

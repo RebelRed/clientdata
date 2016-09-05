@@ -47,7 +47,8 @@
               <% @people.each do |person| %>
     
                  <tr>
-                    <td class="col-md-2"><h3><%= link_to person.first_name ,person %></h3></td>
+                    <td class="col-md-2"><h3><%= link_to person.first_name ,person %></h3>
+                    <span class="label label-primary" id="keyc"></span></td>
                     
                     <td class="col-md-2"><h3><%= link_to person.job %></h3></td>
                     <td ><h3> <p class="date"><%= person.created_at.strftime("%B, %D, %Y")%></p></h3></td>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :entities do
 
     collection do
+      get 'addresses', to: 'entities#addresses' 
       get 'disabled' , to: 'entities#disabled'
       get 'disable' , to: 'entities#disable'
  end

@@ -24,7 +24,7 @@ end
 
   # GET /users/new
   def new
-    @users = User.new
+    @user = User.new
 
   end
 

@@ -5,10 +5,18 @@
  <div class="col-md-offset-2">
  <div class="activity">
  <div class = "row">
-  <h3> <%= link_to activity.owner.first_name , activity.owner if activity.owner %> 
- 	 <%= render_activity activity %></h3>
+  <h5> <%= link_to activity.owner.first_name , activity.owner if activity.owner %> 
+ 	 <%= render_activity activity %></h5>
  	 </div>
 </div>
 </div>
 
 <% end %>
+
+<div class="container">
+   <div class="row">
+     <div class="col-md-3 col-md-offset-3">
+       <h4> <%= will_paginate @entities %><h4>
+     </div>
+   </div>
+ </div>

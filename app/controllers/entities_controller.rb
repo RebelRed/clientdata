@@ -20,8 +20,9 @@ end
   # GET /entities/new
   def new
     @entity = Entity.new
+    1.times do
      @entity.addresses.build
-
+     end
   end
 
   # GET /entities/1/edit
@@ -33,8 +34,10 @@ end
   def create
     @entity = Entity.new(entity_params)
 
+
     respond_to do |format|
       if @entity.save
+        @entity.create_activity :create, owner: current_user
         format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
         format.json { render :show, status: :created, location: @entity }
       else
@@ -47,6 +50,8 @@ end
   # PATCH/PUT /entities/1
   # PATCH/PUT /entities/1.json
   def update
+ #@entity.create_activity key: 'entity.existing_type', owner: current_user
+    @entity.create_activity :update, owner: current_user
     respond_to do |format|
       if @entity.update(entity_params)
         format.html { redirect_to @entity, notice: 'Entity was successfully updated.' }
@@ -61,10 +66,15 @@ end
   # DELETE /entities/1
   # DELETE /entities/1.json
   def destroy
-    @entity.destroy
+      @entity = Entity.find(params[:id])
+       @entity.create_activity :destroy, owner: current_user
+        @entity.destroy
+    
     respond_to do |format|
+    
       format.html { redirect_to entities_url, notice: 'Entity was successfully destroyed.' }
       format.json { head :no_content }
+      
     end
   end
 
@@ -75,6 +85,18 @@ end
     render 'index'
       
     end
+
+  #   def  addresses
+
+       
+     
+  #      render :partial => 'entities/address_fields'
+
+    
+  # end
+  # def entity_name
+  #     @entity.create_activity key: 'entity.entity_name', owner: current_user
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

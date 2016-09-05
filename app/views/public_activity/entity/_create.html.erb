@@ -1,8 +1,8 @@
   
- <h3> created </h3>
+ <h5> created </h5>
 
  <% if activity.trackable %>
- <h3><%= link_to activity.trackable.entity_name %></h3>
+ <h5><%= link_to activity.trackable.entity_name %></h5> at <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
  <% else %>
    which is been destroyed
    <% end  %>
