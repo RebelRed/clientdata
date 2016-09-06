@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
+gem 'turbolinks'
+gem "select2-rails"
 gem "country_select"
 gem "public_activity"
 gem "acts-as-taggable-on"
 gem "devise"
 gem "mysql"
 gem 'mysql2', '~> 0.4.4'
-gem "select2-rails"
+
 gem "will_paginate"
 gem "nested_form"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -19,8 +19,8 @@
           </div>
           <div class=" col-md-4" >
             <ul>
-               <%= label_tag :key_person %>
-           <%= check_box_tag :key_person, params[:search] , name: "key_person"%>
+               <%= label_tag :key_contact %>
+           <%= check_box_tag :key_contact, params[:search] , name: "key_person"%>
              </ul>
              <%= form_tag(users_path, :method => "get", id: "search-form") do %>
              <%= text_field_tag :search, params[:search], placeholder: "Search" %>

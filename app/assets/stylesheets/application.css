@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require select2
+ *= require select2-bootstrap
 
 
 
@@ -30,3 +31,10 @@
 
 	display: none;
 }*/
+.navbar-inverse {
+    background-color: #BDB76B;
+    border-color: #E7E7E7;
+}
+.navbar-left{
+	 border-color: black;
+}
