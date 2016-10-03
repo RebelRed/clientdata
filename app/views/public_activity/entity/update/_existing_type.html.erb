@@ -1,0 +1,8 @@
+<h5> changed existing type of </h5>
+
+ <% if activity.trackable %>
+Entity <h5><%= link_to activity.trackable.entity_name %></h5> to
+ <h5><%= link_to activity.trackable.existing_type %></h5> 
+ <% else %>
+   which is been destroyed
+   <% end  %>

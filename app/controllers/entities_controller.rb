@@ -34,8 +34,8 @@ end
   # POST /entities.json
   def create
     @entity = Entity.new(entity_params)
-
-
+    
+      @entity.previous_changes
     respond_to do |format|
       if @entity.save
         @entity.create_activity :create, owner: current_user
@@ -51,8 +51,9 @@ end
   # PATCH/PUT /entities/1
   # PATCH/PUT /entities/1.json
   def update
- #@entity.create_activity key: 'entity.existing_type', owner: current_user
-    @entity.create_activity :update, owner: current_user
+ #@entity.create_activity key: 'entity.update.existing_type', owner: current_user
+   @entity.create_activity key: 'entity.update.entity_name', owner: current_user
+  @entity.create_activity :update, owner: current_user
     respond_to do |format|
       if @entity.update(entity_params)
         format.html { redirect_to @entity, notice: 'Entity was successfully updated.' }
@@ -96,7 +97,7 @@ end
     
   # end
   def entity_name
-      @entity.create_activity key: 'entity.entity_name', owner: current_user
+      @entity.create_activity key: 'entity.entity_name.update', owner: current_user
   end
 
   private
@@ -112,6 +113,6 @@ end
     def entity_params
       #params[:entity][:selector] ||= ['Applicant']
 
-      params.require(:entity).permit(:entity_name,:existing_type,:billing,:credit,:notes,:disable_person, addresses_attributes: [ :id, :entity_id,:street,:city,:country,:zip,:tmo,:state,:_destroy] , :selector => [])
+      params.require(:entity).permit(:entity_name,:existing_type,:billing,:credit,:notes,:disable_person, addresses_attributes: [ :id, :entity_id,:street,:city,:country,:zip,:tmo,:state,:_destroy] , :selector => [ ])
     end
 end

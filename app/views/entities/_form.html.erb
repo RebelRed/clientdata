@@ -37,7 +37,7 @@
       <option value="Foreign Counsel"  >Foreign Counsel</option>
       </select>
  
-        <%#= f.select :selector,options_for_select( ['Applicant','Client','Foreign Counsel'] ) ,{ :selected => @entity.selector }, { :multiple => true, :id => "id_label_multiple", :class => "form-control" } %> 
+        <%#= f.select :selector ,options_for_select( ['Applicant','Client','Foreign Counsel'],f.object.selector.to_s ) ,{ :selected => f.object.selector.to_s }, { :multiple => true, :id => "id_label_multiple", :class => "form-control" } %> 
         <%# if params[:action] == 'edit' %> 
             
             <%#= f.text_area :selector  %>
@@ -118,11 +118,10 @@
  
     $("#id_label_multiple ").select2({tags: true,multiple:true});
      
+     $("#id_label_multiple ").val("<%= @entity.selector %>")
 
-$('#id_label_multiple').val();
 
-
-     // $('select').select2();
+     
 
 
 
